@@ -9,8 +9,9 @@ export const createProduct = async (req: Request, res: Response): Promise<void> 
   try {
     const product = await Product.create(req.body);
     res.status(201).json(product);
-  } catch {
-    res.status(400);
+  } catch (error : any) {
+    console.error('Error creating product:', error);
+    res.status(400).json({ message: 'Failed to create product', error: error.message });
   }
 };
 
@@ -21,8 +22,14 @@ export const createProduct = async (req: Request, res: Response): Promise<void> 
 export const getAllProducts = async (req: Request, res: Response): Promise<void> => {
   const { category } = req.query
   try {
-    const products = await Product.find({category});
-    res.status(200).json(products);
+    if (!category) {
+      const products = await Product.find({});
+      res.status(200).json(products);
+    }
+    else{
+      const products = await Product.find({category});
+      res.status(200).json(products);
+    }
   } catch {
     res.status(500);
   }
