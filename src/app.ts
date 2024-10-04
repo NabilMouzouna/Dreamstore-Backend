@@ -2,9 +2,13 @@ import express, { Express } from 'express';
 import productRoute from './routes/products/productsRoute';
 import { config } from 'dotenv';
 import mongoose from 'mongoose';
+import cors from "cors";
 const app: Express = express();
 config();
 app.use(express.json());
+app.use(cors({
+  origin : "*"
+}))
 const PORT = process.env.PORT || 8001;
 const URI = process.env.MONGODB_URI;
 

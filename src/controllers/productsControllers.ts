@@ -19,8 +19,9 @@ export const createProduct = async (req: Request, res: Response): Promise<void> 
 // @route   GET /api/products
 // @access  Public
 export const getAllProducts = async (req: Request, res: Response): Promise<void> => {
+  const { category } = req.query
   try {
-    const products = await Product.find();
+    const products = await Product.find({category});
     res.status(200).json(products);
   } catch {
     res.status(500);
