@@ -7,7 +7,7 @@ const app: Express = express();
 config();
 app.use(express.json());
 app.use(cors({
-  origin : "*"
+  origin : "*" //TODO : must be replaced with the original frontend server url only
 }))
 const PORT = process.env.PORT || 8001;
 const URI = process.env.MONGODB_URI;
