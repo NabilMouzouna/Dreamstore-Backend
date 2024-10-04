@@ -7,7 +7,7 @@ const app: Express = express();
 config();
 app.use(express.json());
 app.use(cors({
-  origin: 'https://dreamstore-jad.netlify.app',
+  origin: ['https://dreamstore-jad.netlify.app','http://localhost:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 
