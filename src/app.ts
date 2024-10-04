@@ -6,9 +6,11 @@ import cors from "cors";
 const app: Express = express();
 config();
 app.use(express.json());
+
 app.use(cors({
-  origin: ['https://dreamstore-jad.netlify.app','http://localhost:3000'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: ['https://dreamstore-jad.netlify.app', 'http://localhost:3000'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  credentials: true 
 }));
 
 const PORT = process.env.PORT || 8001;
